@@ -96,7 +96,7 @@ pwn.bat:
 
 ```bat
 @echo off
-whoami > C:\Users\xxx\Desitop\pwned.txt
+whoami > C:\Users\xxx\Desktop\pwned.txt
 ```
 
 test.ps1:
